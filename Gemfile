@@ -11,19 +11,21 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
+
+gem 'devise'
 gem 'carrierwave', '~> 1.0'
+gem 'activeadmin'
 
 group :development, :test do
+  gem 'rspec-rails', '~> 3.8'
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
-  gem 'pry-nav'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'selenium-webdriver'
 end
 
