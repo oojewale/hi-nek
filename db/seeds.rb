@@ -1,8 +1,9 @@
 puts 'Running seed...'
 
-User.create!(
-  email: 'admin@example.com', password: 'password',
-  password_confirmation: 'password', admin: true
-) unless Rails.env.production?
+User.find_or_create_by!(email: 'admin@example.com') do |user|
+  user.password = 'password'
+  user.password_confirmation = 'password'
+  user.admin = true
+end unless Rails.env.production?
 
 puts 'Seed successfully run.'

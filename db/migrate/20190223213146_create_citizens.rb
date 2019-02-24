@@ -3,7 +3,6 @@ class CreateCitizens < ActiveRecord::Migration[5.1]
     create_table :citizens do |t|
       t.string :first_name
       t.string :last_name
-      t.integer :age
       t.date :dob
       t.integer :gender
       t.string :origin_state
@@ -16,6 +15,7 @@ class CreateCitizens < ActiveRecord::Migration[5.1]
       t.boolean :card_ready, default: false
       t.string :image
       t.string :signature
+      t.references :user
 
       t.timestamps
     end

@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20190223214558) do
   create_table "citizens", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.integer "age"
     t.date "dob"
     t.integer "gender"
     t.string "origin_state"
@@ -45,8 +44,10 @@ ActiveRecord::Schema.define(version: 20190223214558) do
     t.boolean "card_ready", default: false
     t.string "image"
     t.string "signature"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_citizens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
