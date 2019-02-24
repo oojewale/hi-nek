@@ -31,9 +31,9 @@ class Citizen < ApplicationRecord
 
   belongs_to :user
 
-  validates :first_name, :last_name, :dob, :gender, :image, :origin_city,
-    :origin_state, :origin_street, :residence_city, :residence_state,
-    :residence_street, :signature, presence: true
+  # validates :first_name, :last_name, :dob, :gender, :image, :origin_city,
+  #   :origin_state, :origin_street, :residence_city, :residence_state,
+  #   :residence_street, :signature, presence: true
 
 
   # this is not to be gender insensitive but makes gender identification

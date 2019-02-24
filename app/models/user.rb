@@ -19,8 +19,14 @@
 #
 
 class User < ApplicationRecord
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_one :citizen, dependent: :destroy
+  accepts_nested_attributes_for :citizen
+
+  def with_citizen
+    self.build_citizen
+    self
+  end
 end

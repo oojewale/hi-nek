@@ -1,0 +1,60 @@
+<div class="field">
+  <%= form.label :first_name %>
+  <%= form.text_field :first_name, id: :citizen_first_name %>
+</div>
+
+<div class="field">
+  <%= form.label :last_name %>
+  <%= form.text_field :last_name, id: :citizen_last_name %>
+</div>
+
+<div class="field">
+  <%= form.label :dob %>
+  <%= form.date_select :dob, id: :citizen_dob, start_year: 1940, end_year: 2001 %>
+</div>
+
+<div class="field">
+  <%= form.label :gender %>
+  <%= form.select :gender, [['Male', 'male'], ['Female', 'female']], id: :citizen_gender %>
+</div>
+
+<div class="field">
+  <%= form.label :origin_state %>
+  <%= form.text_field :origin_state, id: :citizen_origin_state %>
+</div>
+
+<div class="field">
+  <%= form.label :origin_city %>
+  <%= form.text_field :origin_city, id: :citizen_origin_city %>
+</div>
+
+<div class="field">
+  <%= form.label :origin_street %>
+  <%= form.text_field :origin_street, id: :citizen_origin_street %>
+</div>
+
+<div class="field">
+  <%= form.label :residence_state %>
+  <%= form.text_field :residence_state, id: :citizen_residence_state %>
+</div>
+
+<div class="field">
+  <%= form.label :residence_city %>
+  <%= form.text_field :residence_city, id: :citizen_residence_city %>
+</div>
+
+<div class="field">
+  <%= form.label :residence_street %>
+  <%= form.text_field :residence_street, id: :citizen_residence_street %>
+</div>
+
+<div class="field">
+  <%= form.label :image %>
+  <%= form.text_field :image, id: :citizen_image %>
+</div>
+
+<div class="field">
+  <%= form.label :signature %>
+  <%= form.text_field :signature, id: :citizen_signature %>
+</div>
+
