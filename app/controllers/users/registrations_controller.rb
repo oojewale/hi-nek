@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    resource.citizen.present? ? citizen_path(resource.citizen) : super
+    citizen_path(resource.citizen)
   end
 
   def configure_sign_up_params

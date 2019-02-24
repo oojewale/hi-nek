@@ -18,6 +18,7 @@ gem 'redis', '~> 4.0'
 
 gem 'devise'
 gem 'carrierwave', '~> 1.0'
+gem 'rmagick', '~> 2.13.1'
 gem 'activeadmin'
 
 group :development, :test do

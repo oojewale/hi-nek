@@ -56,13 +56,8 @@
 </p>
 
 <p>
-  <strong>Contesting:</strong>
-  <%= @citizen.contesting %>
-</p>
-
-<p>
   <strong>Image:</strong>
-  <%= @citizen.image %>
+  <%= image_tag(@citizen.image_url :thumb) if @citizen.image? %>
 </p>
 
 <p>
@@ -70,11 +65,6 @@
   <%= @citizen.signature %>
 </p>
 
-<p>
-  <strong>Card ready:</strong>
-  <%= @citizen.card_ready %>
-</p>
-
 <%= link_to 'Edit', edit_citizen_path(@citizen) %> |
-<%= link_to 'Back', citizens_path %>
+<%= link_to 'Back', citizens_path %> |
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
