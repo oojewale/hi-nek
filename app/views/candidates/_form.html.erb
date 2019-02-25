@@ -1,0 +1,33 @@
+<%= form_with(model: candidate, url: citizen_candidates_path, local: true) do |form| %>
+  <% if candidate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+      <% candidate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :party_id %>
+    <%= form.select :party_id,
+      options_from_collection_for_select(Party.all, 'id', 'code'),
+      prompt: "Select",
+      id: :candidate_party_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :office_id %>
+    <%= form.select :office_id,
+      options_from_collection_for_select(Office.all, 'id', 'name'),
+      prompt: "Select",
+      id: :candidate_office_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

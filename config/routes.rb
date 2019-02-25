@@ -15,9 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :citizens do
+  resources :citizens, except: [:index] do
     member do
       get 'vcard' => "citizens#download_vcard", as: :download_vcard, format: :pdf
     end
+    resources :candidates
   end
 end

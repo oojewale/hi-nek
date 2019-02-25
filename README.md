@@ -16,6 +16,7 @@ Allows citizens to register both as candidates and electorates. There's also a f
 * Does not allow candidates who aren't registered as citizens to register.
 * Can probably allow people to register and be able to save state their current session, so that people who do not complete the registration can come back and not continue.
 * There might be need to turn off "candidates citizens" after election.
+* I could add states, constituency and all that but this is just a "play" app.
 
 
 ## Specs

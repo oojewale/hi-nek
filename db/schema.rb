@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190223214558) do
+ActiveRecord::Schema.define(version: 20190225123705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20190223214558) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "candidates", force: :cascade do |t|
+    t.bigint "party_id"
+    t.bigint "office_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "citizen_id"
+    t.index ["citizen_id"], name: "index_candidates_on_citizen_id"
+    t.index ["office_id"], name: "index_candidates_on_office_id"
+    t.index ["party_id"], name: "index_candidates_on_party_id"
+  end
+
   create_table "citizens", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -40,7 +51,6 @@ ActiveRecord::Schema.define(version: 20190223214558) do
     t.string "residence_state"
     t.string "residence_city"
     t.string "residence_street"
-    t.boolean "contesting", default: false
     t.boolean "card_ready", default: false
     t.string "image"
     t.string "signature"
@@ -48,6 +58,18 @@ ActiveRecord::Schema.define(version: 20190223214558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_citizens_on_user_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parties", force: :cascade do |t|
+    t.string "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,4 +85,6 @@ ActiveRecord::Schema.define(version: 20190223214558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "candidates", "offices"
+  add_foreign_key "candidates", "parties"
 end

@@ -4,7 +4,6 @@
 #
 #  id               :bigint(8)        not null, primary key
 #  card_ready       :boolean          default(FALSE)
-#  contesting       :boolean          default(FALSE)
 #  dob              :date
 #  first_name       :string
 #  gender           :integer
@@ -31,16 +30,23 @@ class Citizen < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   belongs_to :user
+  has_many :candidates
 
   validates :first_name, :last_name, :dob, :gender, :image, :origin_city,
     :origin_state, :origin_street, :residence_city, :residence_state,
     :residence_street, :signature, presence: true
 
+  validate :eligibility
 
   # this is not to be gender insensitive but makes gender identification
   # easier for electoral purposes @ least in this part of the world
   # for now.
   enum gender: { male: 0, female: 1 }
+
+  # delete this if not used.
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def age
     convert_to_years(dob) if dob
@@ -50,7 +56,11 @@ class Citizen < ApplicationRecord
     age >= 18
   end
 
-  def full_name
-    "#{first_name} #{last_name}"
+  private
+
+  def eligibility
+    unless eligible?
+      errors.add(:dob, "Too young to participate in an electoral process")
+    end
   end
 end
