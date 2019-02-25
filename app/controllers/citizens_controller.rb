@@ -1,6 +1,4 @@
 class CitizensController < InheritedResources::Base
-  before_action :verify_user_role, only: [:index]
-
   def new
     redirect_to_citizen and return
   end
@@ -14,10 +12,6 @@ class CitizensController < InheritedResources::Base
 
   def redirect_to_citizen
     redirect_to citizen_path(current_user.citizen)
-  end
-
-  def verify_user_role
-    redirect_to_citizen unless current_user.admin?
   end
 
   def citizen_params
