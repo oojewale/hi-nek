@@ -1,6 +1,8 @@
 class CitizensController < InheritedResources::Base
+  before_action :verify_user_role, only: [:index]
+
   def new
-    redirect_to citizen_path(current_user.citizen) and return
+    redirect_to_citizen and return
   end
 
   def download_vcard
@@ -9,6 +11,14 @@ class CitizensController < InheritedResources::Base
   end
 
   private
+
+  def redirect_to_citizen
+    redirect_to citizen_path(current_user.citizen)
+  end
+
+  def verify_user_role
+    redirect_to_citizen unless current_user.admin?
+  end
 
   def citizen_params
     params.require(:citizen).permit(
