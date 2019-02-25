@@ -17,12 +17,19 @@ gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
 
 gem 'devise'
+
+# image upload
 gem 'carrierwave', '~> 1.0'
 gem 'rmagick', '~> 2.13.1'
+
 gem 'activeadmin'
 
+# pdf generator
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+# signature
+gem 'john_hancock'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
