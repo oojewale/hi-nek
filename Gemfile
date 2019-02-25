@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
+gem 'sidekiq'
 
 gem 'devise'
 
@@ -30,6 +31,9 @@ gem 'wkhtmltopdf-binary'
 
 # signature
 gem 'john_hancock'
+
+# sms
+gem 'twilio-ruby', '~> 5.20.1'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
