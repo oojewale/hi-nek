@@ -3,6 +3,11 @@ class CitizensController < InheritedResources::Base
     redirect_to citizen_path(current_user.citizen) and return
   end
 
+  def download_vcard
+    @citizen = Citizen.find(params[:id])
+    render pdf: "#{ controller_name }-#{ @citizen.id }"
+  end
+
   private
 
   def citizen_params

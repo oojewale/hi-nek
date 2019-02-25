@@ -1,0 +1,6 @@
+<%= render "citizens/partials/show_fields" %>
+
+<p>
+  <strong>Image:</strong>
+  <%= wicked_pdf_image_tag(@citizen.image_url :thumb) if @citizen.image? %>
+</p>

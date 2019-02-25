@@ -21,6 +21,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'rmagick', '~> 2.13.1'
 gem 'activeadmin'
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'capybara', '~> 2.13'

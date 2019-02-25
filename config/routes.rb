@@ -15,5 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :citizens
+  resources :citizens do
+    member do
+      get 'vcard' => "citizens#download_vcard", as: :download_vcard, format: :pdf
+    end
+  end
 end

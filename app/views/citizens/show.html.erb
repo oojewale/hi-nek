@@ -1,70 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @citizen.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @citizen.last_name %>
-</p>
-
-<p>
-  <strong>Age:</strong>
-  <%= @citizen.age %>
-</p>
-
-<p>
-  <strong>Dob:</strong>
-  <%= @citizen.dob %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @citizen.gender %>
-</p>
-
-<p>
-  <strong>Origin state:</strong>
-  <%= @citizen.origin_state %>
-</p>
-
-<p>
-  <strong>Origin city:</strong>
-  <%= @citizen.origin_city %>
-</p>
-
-<p>
-  <strong>Origin street:</strong>
-  <%= @citizen.origin_street %>
-</p>
-
-<p>
-  <strong>Residence state:</strong>
-  <%= @citizen.residence_state %>
-</p>
-
-<p>
-  <strong>Residence city:</strong>
-  <%= @citizen.residence_city %>
-</p>
-
-<p>
-  <strong>Residence street:</strong>
-  <%= @citizen.residence_street %>
-</p>
+<%= render "citizens/partials/show_fields" %>
 
 <p>
   <strong>Image:</strong>
   <%= image_tag(@citizen.image_url :thumb) if @citizen.image? %>
 </p>
 
-<p>
-  <strong>Signature:</strong>
-  <%= @citizen.signature %>
-</p>
-
+<%= link_to 'Download Pdf', download_vcard_citizen_path(@citizen), target: "_blank" %> |
 <%= link_to 'Edit', edit_citizen_path(@citizen) %> |
 <%= link_to 'Back', citizens_path %> |
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
