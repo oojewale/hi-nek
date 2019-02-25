@@ -1,3 +1,23 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admin_users, { class_name: 'User' }.merge(ActiveAdmin::Devise.config)
+  get '/admin', to: redirect('/admin/login')
+  ActiveAdmin.routes(self)
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  devise_scope :user do
+    authenticated :user do
+      root 'citizens#new', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
+
+  resources :citizens do
+    member do
+      get 'vcard' => "citizens#download_vcard", as: :download_vcard, format: :pdf
+    end
+  end
 end

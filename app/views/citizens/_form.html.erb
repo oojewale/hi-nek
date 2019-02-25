@@ -1,0 +1,19 @@
+<%= form_with(model: citizen, local: true, html: { multipart: true }) do |form| %>
+  <% if citizen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(citizen.errors.count, "error") %> prohibited this citizen from being saved:</h2>
+
+      <ul>
+      <% citizen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render partial: 'shared/citizen_form', locals: { form: form } %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
