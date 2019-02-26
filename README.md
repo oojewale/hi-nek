@@ -4,22 +4,22 @@ It's the election season in My country; Feb - Mar, 2019. I thought to put this l
 
 ## What Does The App Do?
 
-Allows citizens to register both as candidates and electorates. There's also a fixed list of offices that candidates can contest.
-
-## Features
-* Takes biodata of citizens.
-* Allows citizens to download or print a temporary voters card.
-* Allows candidates to download proof of candidacy slip for registered candidates.
+* Allows eligible citizens to register for voters slip.
+* Those who want to be candidate could also show interest in being candidates.
+* There's a fixed list of offices that candidates can contest.
+* Allows citizens to download or print a temporary voters slip with image & signature.
+* Allows admin to update a citizen's profile when their permanent voter's slip is ready.
+* Sends sms to citizen when permanent voter's slip is ready.
 
 
 ## Gotchas
 * Does not allow candidates who aren't registered as citizens to register.
-* Can probably allow people to register and be able to save state their current session, so that people who do not complete the registration can come back and not continue.
+* Could probably allow people to register and be able to save state their current session, so that people who do not complete their registration can come back and not continue.
 * There might be need to turn off "candidates citizens" after election.
-* I could add states, constituency and all that but this is just a "play" app.
+* Could add states, constituency and all that but this is just a "dummy".
+* Could probably think about this in a million ways but let's get the dummy code out.
 
 
 ## Specs
 * `bundle exec rspec`
 
-PS: Should update this README with time.
