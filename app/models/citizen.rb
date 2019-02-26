@@ -43,7 +43,7 @@ class Citizen < ApplicationRecord
     if: proc { saved_change_to_card_ready? && card_ready? }
 
   # this is not to be gender insensitive but makes gender identification
-  # easier for electoral purposes @ least in this part of the world
+  # easier for electoral purposes, @ least in this part of the world
   # for now.
   enum gender: { male: 0, female: 1 }
 
