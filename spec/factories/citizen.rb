@@ -11,7 +11,7 @@ FactoryBot.define do
     residence_city { Faker::Address.city }
     residence_state { Faker::Address.state }
     residence_street { Faker::Address.street_address }
-    phone { Faker::PhoneNumber.phone_number_with_country_code }
+    phone { '+2343000023242' }
     signature { Faker::Alphanumeric.alpha 2 }
     image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/soccer.jpeg'), 'image/jpeg') }
 

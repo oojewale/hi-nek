@@ -37,6 +37,8 @@ class Citizen < ApplicationRecord
     :origin_state, :origin_street, :residence_city, :residence_state, :phone,
     :residence_street, :signature, presence: true
 
+  validates_length_of :phone, within: 8..14
+
   validate :eligibility
 
   after_update :send_sms, if: :card_marked_ready?
