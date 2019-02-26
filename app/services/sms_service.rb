@@ -26,6 +26,6 @@ class SmsService
     account_sid = ENV.fetch('ACCOUNT_SID')
     auth_token = ENV.fetch('AUTH_TOKEN')
 
-    Twilio::REST::Client.new account_sid, auth_token
+    @client ||= Twilio::REST::Client.new(account_sid, auth_token)
   end
 end
