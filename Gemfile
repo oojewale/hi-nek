@@ -44,6 +44,13 @@ group :development, :test do
   gem 'selenium-webdriver'
 end
 
+group :test do
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+end
+
 group :development do
   gem 'annotate'
   gem 'web-console', '>= 3.3.0'

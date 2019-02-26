@@ -17,8 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     [
       :first_name, :last_name, :dob, :gender, :phone,
       :origin_state, :origin_city, :origin_street, :residence_state,
-      :residence_city, :residence_street, :contesting, :image, :signature,
-      :card_ready
+      :residence_city, :residence_street, :contesting, :image, :signature
     ]
   end
 end

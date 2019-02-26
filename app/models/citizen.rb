@@ -37,10 +37,11 @@ class Citizen < ApplicationRecord
     :origin_state, :origin_street, :residence_city, :residence_state, :phone,
     :residence_street, :signature, presence: true
 
+  validates_length_of :phone, within: 8..14
+
   validate :eligibility
 
-  after_update :send_sms,
-    if: proc { saved_change_to_card_ready? && card_ready? }
+  after_update :send_sms, if: :card_marked_ready?
 
   # this is not to be gender insensitive but makes gender identification
   # easier for electoral purposes, @ least in this part of the world
@@ -56,6 +57,7 @@ class Citizen < ApplicationRecord
   end
 
   def eligible?
+    return false unless age
     age >= 18
   end
 
@@ -69,5 +71,9 @@ class Citizen < ApplicationRecord
 
   def send_sms
     SmsWorker.perform_async(id)
+  end
+
+  def card_marked_ready?
+    saved_change_to_card_ready? && card_ready?
   end
 end
