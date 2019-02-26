@@ -1,6 +1,6 @@
 class CitizensController < InheritedResources::Base
   def new
-    redirect_to_citizen and return
+    redirect_home
   end
 
   def download_vcard
@@ -9,10 +9,6 @@ class CitizensController < InheritedResources::Base
   end
 
   private
-
-  def redirect_to_citizen
-    redirect_to citizen_path(current_user.citizen)
-  end
 
   def citizen_params
     params.require(:citizen).permit(

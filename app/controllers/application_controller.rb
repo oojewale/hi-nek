@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def redirect_home
+    redirect_to admin_root_path and return if current_user.admin?
+    redirect_to citizen_path(current_user.citizen)
+  end
 end
