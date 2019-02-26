@@ -12,6 +12,7 @@
 #  origin_city      :string
 #  origin_state     :string
 #  origin_street    :string
+#  phone            :string
 #  residence_city   :string
 #  residence_state  :string
 #  residence_street :string
@@ -33,7 +34,7 @@ class Citizen < ApplicationRecord
   has_many :candidates
 
   validates :first_name, :last_name, :dob, :gender, :image, :origin_city,
-    :origin_state, :origin_street, :residence_city, :residence_state,
+    :origin_state, :origin_street, :residence_city, :residence_state, :phone,
     :residence_street, :signature, presence: true
 
   validate :eligibility

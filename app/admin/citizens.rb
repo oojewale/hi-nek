@@ -1,6 +1,5 @@
 ActiveAdmin.register Citizen do
   permit_params :card_ready
-  includes :user
 
   index do
     id_column
@@ -18,7 +17,7 @@ ActiveAdmin.register Citizen do
   filter :email
 
   show do
-    attributes_table :card_ready, :dob, :full_name, :gender,
+    attributes_table :card_ready, :dob, :full_name, :gender, :phone,
       :origin_city, :origin_state, :origin_street, :residence_city,
       :residence_state, :residence_street do
         row 'Email' do
@@ -33,10 +32,4 @@ ActiveAdmin.register Citizen do
     end
     f.actions
   end
-
-  # controller do
-  #   def update
-
-  #   end
-  # end
 end

@@ -9,7 +9,7 @@ class SmsService
       to: citizen.phone,
       body: message
     )
-  rescue => e
+  rescue Twilio::REST::RestError => e
     Rails.logger.error("Could not send sms to #{ citizen.full_name }. See error => #{ e.message }")
     raise e.message
   end
