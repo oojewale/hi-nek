@@ -12,6 +12,7 @@
 #  origin_city      :string
 #  origin_state     :string
 #  origin_street    :string
+#  phone            :string
 #  residence_city   :string
 #  residence_state  :string
 #  residence_street :string
@@ -33,17 +34,19 @@ class Citizen < ApplicationRecord
   has_many :candidates
 
   validates :first_name, :last_name, :dob, :gender, :image, :origin_city,
-    :origin_state, :origin_street, :residence_city, :residence_state,
+    :origin_state, :origin_street, :residence_city, :residence_state, :phone,
     :residence_street, :signature, presence: true
 
   validate :eligibility
+
+  after_update :send_sms,
+    if: proc { saved_change_to_card_ready? && card_ready? }
 
   # this is not to be gender insensitive but makes gender identification
   # easier for electoral purposes @ least in this part of the world
   # for now.
   enum gender: { male: 0, female: 1 }
 
-  # delete this if not used.
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -62,5 +65,9 @@ class Citizen < ApplicationRecord
     unless eligible?
       errors.add(:dob, "Too young to participate in an electoral process")
     end
+  end
+
+  def send_sms
+    SmsWorker.perform_async(id)
   end
 end

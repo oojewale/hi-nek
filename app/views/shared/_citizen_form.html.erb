@@ -9,6 +9,11 @@
 </div>
 
 <div class="field">
+  <%= form.label :phone, 'Phone (starts with area code. E.g +234)' %>
+  <%= form.text_field :phone, id: :citizen_phone %>
+</div>
+
+<div class="field">
   <%= form.label :dob %>
   <%= form.date_select :dob, id: :citizen_dob, start_year: 1940, end_year: 2001 %>
 </div>
